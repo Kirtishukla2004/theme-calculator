@@ -7,9 +7,9 @@
 }
 body{
     font-family: sans-serif;
-    background: rgb(238,174,202);
-    background:radial-gradient(circle,rgba(238,174,202,1)0%,
-    rgba(148,187,233,1)100%);
+    background: rgb(89, 88, 88);
+    background:radial-gradient(circle,rgb(191, 146, 146)0%,
+    rgb(98, 98, 98)100%);
 
 }
 a{
@@ -69,8 +69,8 @@ a{
     overflow-x:scroll ;
 }
 #display::-webkit-scrollbar{
-display: block;
-height: 3px;}
+display: inline;
+height: 2px;}
 button{
     height: 60px;
     width: 60px;

@@ -1,24 +1,32 @@
 const display = document.querySelector("#display");
-const buttons = document.querySelectorAll(".btn-number");
+const buttons = document.querySelectorAll(".cal-button");
 
-buttons.forEach((item) => {
-  item.onclick = () => {
-    if (item.id == "clear") {
-      display.innerText = "";
-    } else if (item.id == "backspace") {
-      let string = display.innerText.toString();
-      display.innerText = string.substr(0, string.length - 1);
-    } else if (item.id == "equal") {
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const buttonValue = button.textContent;
+    handleButtonClick(buttonValue);
+  });
+});
+
+function handleButtonClick(value) {
+  switch (value) {
+    case "=":
       try {
-        display.innerText = eval(display.innerText.replace(/x/g, "*"));
+        const expression = display.innerText;
+        const result = eval(expression.replace(/x/, "*"));
+        display.innerText = result;
       } catch (error) {
         display.innerText = "Error";
       }
-    } else {
-      display.innerText += item.id;
-    }
-  };
-});
+      break;
+    case "C":
+      display.innerText = "";
+      break;
+    default:
+      display.innerText += value;
+      break;
+  }
+}
 
 const themeToggleBtn = document.querySelector(".theme-toggler");
 const calculator = document.querySelector(".calculator");
@@ -31,4 +39,8 @@ themeToggleBtn.onclick = () => {
   isDark = !isDark;
 };
 
-
+const equalButton = document.querySelector("#equal");
+equalButton.addEventListener("click", () => {
+  const buttonValue = equalButton.textContent;
+  handleButtonClick(buttonValue);
+});
